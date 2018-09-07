@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <!-- unrelated note: VS-15.8.3 at least supports **.cs syntax while VS-15.7.6 does not :-/ -->
+    <MySource Exclude="obj/**/*" Include="**/*.cs"/>
+  </ItemGroup>
+  <ItemDefinitionGroup>
+    <MySource>
+      <MyOutputCopySource>%(RelativeDir)%(Filename)%(Extension)</MyOutputCopySource>
+      <MyOutputCopyDestination>$(OutputPath)%(Identity).bak</MyOutputCopyDestination>
+    </MySource>
+  </ItemDefinitionGroup>
+</Project>

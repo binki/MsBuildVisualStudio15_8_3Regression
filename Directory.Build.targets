@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Target BeforeTargets="Build" Name="DoSomething">
+    <Copy DestinationFiles="%(MySource.MyOutputCopyDestination)" SourceFiles="%(MyOutputCopySource)"/>
+  </Target>
+
+  <!-- Clean target for completenessish -->
+  <Target BeforeTargets="Clean" Name="CleanDoSomething">
+    <ItemGroup>
+      <MySourceClean Include="$(OutputPath)/**/*.cs.bak"/>
+    </ItemGroup>
+    <Delete Files="@(MySourceClean)"/>
+  </Target>
+</Project>
